@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dynamic-tags-project/static/css/main.e6c13ad2.css",
+    "main.js": "/dynamic-tags-project/static/js/main.7bbfbc8f.js",
+    "static/js/453.a0717f32.chunk.js": "/dynamic-tags-project/static/js/453.a0717f32.chunk.js",
+    "index.html": "/dynamic-tags-project/index.html",
+    "main.e6c13ad2.css.map": "/dynamic-tags-project/static/css/main.e6c13ad2.css.map",
+    "main.7bbfbc8f.js.map": "/dynamic-tags-project/static/js/main.7bbfbc8f.js.map",
+    "453.a0717f32.chunk.js.map": "/dynamic-tags-project/static/js/453.a0717f32.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.7bbfbc8f.js"
+  ]
+}
