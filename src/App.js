@@ -11,7 +11,7 @@ function App() {
   const [tiktokLink, setTiktokLink] = useState('');
 
   const phpCode = `
-<?php 
+
 // Custom dynamic tag for GMB LINK
 class My_GMB_Dynamic_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     public function get_name() {
@@ -276,7 +276,7 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
     $dynamic_tags->register( new \\My_Phone_Number_Icon_Box_Tag() );
 });
 
-?>
+
 `;
 
   const handleCopy = () => {
@@ -370,5 +370,5 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
     </div>
   );
 }
-// go
+
 export default App;
