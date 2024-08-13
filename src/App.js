@@ -109,7 +109,7 @@ class My_SMS_Phone_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     protected function register_controls() {}
 
     public function render() {
-        echo 'tel:${smsPhone}';
+        echo 'sms:${smsPhone}';
     }
 }
 
