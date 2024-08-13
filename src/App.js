@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [phoneNumber1, setPhoneNumber1] = useState('123-456-7890');
-  const [phoneNumber2, setPhoneNumber2] = useState('123-456-7890');
-  const [smsPhone, setSmsPhone] = useState('123-456-7890');
-  const [companyEmail, setCompanyEmail] = useState('example@gmail.com');
-  const [facebookLink, setFacebookLink] = useState('');
-  const [instagramLink, setInstagramLink] = useState('');
-  const [twitterLink, setTwitterLink] = useState('');
-  const [tiktokLink, setTiktokLink] = useState('');
+  const [phoneNumber1, setPhoneNumber1] = useState("123-456-7890");
+  const [phoneNumber2, setPhoneNumber2] = useState("123-456-7890");
+  const [smsPhone, setSmsPhone] = useState("123-456-7890");
+  const [companyEmail, setCompanyEmail] = useState("example@gmail.com");
+  const [facebookLink, setFacebookLink] = useState("");
+  const [instagramLink, setInstagramLink] = useState("");
+  const [twitterLink, setTwitterLink] = useState("");
+  const [tiktokLink, setTiktokLink] = useState("");
 
   const phpCode = `
 
@@ -281,91 +282,89 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(phpCode);
-    alert('PHP code copied to clipboard!');
+    alert("PHP code copied to clipboard!");
   };
 
   return (
     <div className="App">
       <h1>PHP Dynamic Tag Generator</h1>
-      
-      <label>
-        Company Phone Number 1:
-        <input 
-          type="text" 
-          value={phoneNumber1}
-          onChange={(e) => setPhoneNumber1(e.target.value)}
-        />
-      </label>
-      <br/>
-      <label>
-        Company Phone Number 2:
-        <input 
-          type="text" 
-          value={phoneNumber2}
-          onChange={(e) => setPhoneNumber2(e.target.value)}
-        />
-      </label>
-      <br/>
-      <label>
-        SMS Phone Number:
-        <input 
-          type="text" 
-          value={smsPhone}
-          onChange={(e) => setSmsPhone(e.target.value)}
-        />
-      </label>
-      <br/>
-      <label>
-        Company Email:
-        <input 
-          type="email" 
-          value={companyEmail}
-          onChange={(e) => setCompanyEmail(e.target.value)}
-        />
-      </label>
-      <br/>
-      <label>
-        Facebook Link:
-        <input 
-          type="text" 
-          value={facebookLink}
-          onChange={(e) => setFacebookLink(e.target.value)}
-        />
-      </label>
-      <br/>
-      <label>
-        Instagram Link:
-        <input 
-          type="text" 
-          value={instagramLink}
-          onChange={(e) => setInstagramLink(e.target.value)}
-        />
-      </label>
-      <br/>
-      <label>
-        Twitter Link:
-        <input 
-          type="text" 
-          value={twitterLink}
-          onChange={(e) => setTwitterLink(e.target.value)}
-        />
-      </label>
-      <br/>
-      <label>
-        TikTok Link:
-        <input 
-          type="text" 
-          value={tiktokLink}
-          onChange={(e) => setTiktokLink(e.target.value)}
-        />
-      </label>
-      <br/>
+      <div className="input-fields">
+        <label>
+          Company Phone Number 1:
+          <input
+            type="text"
+            value={phoneNumber1}
+            onChange={(e) => setPhoneNumber1(e.target.value)}
+          />
+        </label>
 
+        <label>
+          Company Phone Number 2:
+          <input
+            type="text"
+            value={phoneNumber2}
+            onChange={(e) => setPhoneNumber2(e.target.value)}
+          />
+        </label>
+
+        <label>
+          SMS Phone Number:
+          <input
+            type="text"
+            value={smsPhone}
+            onChange={(e) => setSmsPhone(e.target.value)}
+          />
+        </label>
+
+        <label>
+          Company Email:
+          <input
+            type="email"
+            value={companyEmail}
+            onChange={(e) => setCompanyEmail(e.target.value)}
+          />
+        </label>
+
+        <label>
+          Facebook Link:
+          <input
+            type="text"
+            value={facebookLink}
+            onChange={(e) => setFacebookLink(e.target.value)}
+          />
+        </label>
+
+        <label>
+          Instagram Link:
+          <input
+            type="text"
+            value={instagramLink}
+            onChange={(e) => setInstagramLink(e.target.value)}
+          />
+        </label>
+
+        <label>
+          Twitter Link:
+          <input
+            type="text"
+            value={twitterLink}
+            onChange={(e) => setTwitterLink(e.target.value)}
+          />
+        </label>
+
+        <label>
+          TikTok Link:
+          <input
+            type="text"
+            value={tiktokLink}
+            onChange={(e) => setTiktokLink(e.target.value)}
+          />
+        </label>
+      </div>
+      <button onClick={handleCopy}>Copy PHP Code</button>
       <h2>Generated PHP Code:</h2>
-      <pre>
-        {phpCode}
-      </pre>
-      
+      <pre>{phpCode}</pre>
+
       <button onClick={handleCopy}>Copy PHP Code</button>
     </div>
   );
