@@ -319,7 +319,7 @@ class My_Company_Phone_1_Name_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     protected function register_controls() {}
 
     public function render() {
-        echo 'Call: ${companyPhone1NameTag}';
+        echo 'Call: ${phoneNumber1}';
     }
 }
 
@@ -622,14 +622,14 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           />
         </label>
 
-        <label>
+        {/* <label>
           Company Phone 1 Name Tag:
           <input
             type="text"
-            value={companyPhone1NameTag}
-            onChange={(e) => setCompanyPhone1NameTag(e.target.value)}
+            value={phoneNumber1}
+            // onChange={(e) => setCompanyPhone1NameTag(e.target.value)}
           />
-        </label>
+        </label> */}
 
         <label>
           Company Phone 2 Name Tag:
