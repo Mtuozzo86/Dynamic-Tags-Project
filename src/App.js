@@ -21,507 +21,76 @@ function App() {
   const [sitemapXmlTag, setSitemapXmlTag] = useState("");
   const [companyAddressTag, setCompanyAddressTag] = useState("");
 
+  // Function to generate PHP class for a dynamic tag
+  const generatePhpClass = (name, title, category, content) => `
+    class My_${name}_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+        public function get_name() {
+            return '${name.toLowerCase()}';
+        }
+    
+        public function get_title() {
+            return __( '${title}', 'plugin-name' );
+        }
+    
+        public function get_group() {
+            return 'site';
+        }
+    
+        public function get_categories() {
+            return [ \\Elementor\\Modules\\DynamicTags\\Module::${category}_CATEGORY ];
+        }
+    
+        protected function register_controls() {}
+    
+        public function render() {
+            echo '${content}';
+        }
+    }
+  `;
+
+  // Generate the full PHP code with all tags
   const phpCode = `
-
-// Custom dynamic tag for GMB LINK
-class My_GMB_Dynamic_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'gmb-link';
-    }
-
-    public function get_title() {
-        return __( 'GMB LINK', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo '${gmbLink}';
-    }
-}
-
-// Custom dynamic tag for Company Phone Number 1
-class My_Company_Phone_1_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'company-phone-1';
-    }
-
-    public function get_title() {
-        return __( 'Company Phone Number 1', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo 'tel:${phoneNumber1}';
-    }
-}
-
-// Custom dynamic tag for Company Phone Number 2
-class My_Company_Phone_2_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'company-phone-2';
-    }
-
-    public function get_title() {
-        return __( 'Company Phone Number 2', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo 'tel:${phoneNumber2}';
-    }
-}
-
-// Custom dynamic tag for SMS Phone Number
-class My_SMS_Phone_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'sms-phone';
-    }
-
-    public function get_title() {
-        return __( 'SMS Phone Number', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo 'sms:${smsPhone}';
-    }
-}
-
-// Custom dynamic tag for Company Email
-class My_Company_Email_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'company-email';
-    }
-
-    public function get_title() {
-        return __( 'Company Email', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo 'mailto:${companyEmail}';
-    }
-}
-
-// Custom dynamic tag for Facebook
-class My_Facebook_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'facebook';
-    }
-
-    public function get_title() {
-        return __( 'Facebook', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo '${facebookLink}';
-    }
-}
-
-// Custom dynamic tag for Instagram
-class My_Instagram_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'instagram';
-    }
-
-    public function get_title() {
-        return __( 'Instagram', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo '${instagramLink}';
-    }
-}
-
-// Custom dynamic tag for Twitter
-class My_Twitter_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'twitter';
-    }
-
-    public function get_title() {
-        return __( 'Twitter', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo '${twitterLink}';
-    }
-}
-
-// Custom dynamic tag for TikTok
-class My_TikTok_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'tiktok';
-    }
-
-    public function get_title() {
-        return __( 'TikTok', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo '${tiktokLink}';
-    }
-}
-
-// Custom dynamic tag for Phone Number (Icon Box desc.)
-class My_Phone_Number_Icon_Box_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'phone-number-icon-box';
-    }
-
-    public function get_title() {
-        return __( 'Phone Number (Icon Box desc.)', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo '<a href="tel:${phoneNumber1}">${phoneNumber1}</a>';
-    }
-}
-
-// Custom dynamic tag for Phone Number (Icon Box desc.)
-class My_Phone_Number_Icon_Box_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'phone-number-icon-box';
-    }
-
-    public function get_title() {
-        return __( 'Phone Number (Icon Box desc.)', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo '<a href="${phoneNumberIconBoxTag}">${phoneNumberIconBoxTag}</a>';
-    }
-}
-
-// Custom dynamic tag for Company Phone #1 Name
-class My_Company_Phone_1_Name_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'company-phone-1-name';
-    }
-
-    public function get_title() {
-        return __( 'Company Phone #1 Name', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo 'Call: ${phoneNumber1}';
-    }
-}
-
-// Custom dynamic tag for Company Phone #2 Name
-class My_Company_Phone_2_Name_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'company-phone-2-name';
-    }
-
-    public function get_title() {
-        return __( 'Company Phone #2 Name', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo 'Call: ${companyPhone2NameTag}';
-    }
-}
-
-// Custom dynamic tag for SMS Phone # Name
-class My_SMS_Phone_Name_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'sms-phone-name';
-    }
-
-    public function get_title() {
-        return __( 'SMS Phone # Name', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo 'Text: ${smsPhoneNameTag}';
-    }
-}
-
-// Custom dynamic tag for Email (Icon Box desc.)
-class My_Email_Icon_Box_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'email-icon-box';
-    }
-
-    public function get_title() {
-        return __( 'Email (Icon Box desc.)', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo '<a href="${emailIconBoxTag}">Send an email ></a>';
-    }
-}
-
-// Custom dynamic tag for SMS (Icon Box desc.)
-class My_Text_Icon_Box_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'text-icon-box';
-    }
-
-    public function get_title() {
-        return __( 'SMS (Icon Box desc.)', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo '<a href="sms:${textIconBoxTag}">${textIconBoxTag}</a>';
-    }
-}
-
-// Custom dynamic tag for "To Email(s) Contact Form"
-class My_To_Email_Contact_Form_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'to-email-contact-form';
-    }
-
-    public function get_title() {
-        return __( 'To Email(s) Contact Form', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo '${toEmailContactFormTag}';
-    }
-}
-
-// Custom dynamic tag for "sitemap.xml"
-class My_Sitemap_XML_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'sitemap-xml';
-    }
-
-    public function get_title() {
-        return __( 'sitemap.xml', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo '${sitemapXmlTag}/sitemap.xml';
-    }
-}
-
-// Custom dynamic tag for Company Address
-class My_Company_Address_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'company-address';
-    }
-
-    public function get_title() {
-        return __( 'Company Address', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo '${companyAddressTag}'; // Replace this with your actual company address
-    }
-}
-
-// Register the custom dynamic tags
-add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
-    $dynamic_tags->register( new \\My_GMB_Dynamic_Tag() );
-    $dynamic_tags->register( new \\My_Company_Phone_1_Tag() );
-    $dynamic_tags->register( new \\My_Company_Phone_2_Tag() );
-    $dynamic_tags->register( new \\My_SMS_Phone_Tag() );
-    $dynamic_tags->register( new \\My_Company_Email_Tag() );
-    $dynamic_tags->register( new \\My_Facebook_Tag() );
-    $dynamic_tags->register( new \\My_Instagram_Tag() );
-    $dynamic_tags->register( new \\My_Twitter_Tag() );
-    $dynamic_tags->register( new \\My_TikTok_Tag() );
-    $dynamic_tags->register( new \\My_Phone_Number_Icon_Box_Tag() );
-    $dynamic_tags->register( new \\My_Company_Phone_1_Name_Tag() );
-    $dynamic_tags->register( new \\My_Company_Phone_2_Name_Tag() );
-    $dynamic_tags->register( new \\My_SMS_Phone_Name_Tag() );
-    $dynamic_tags->register( new \\My_Email_Icon_Box_Tag() );
-    $dynamic_tags->register( new \\My_Text_Icon_Box_Tag() );
-    $dynamic_tags->register( new \\My_To_Email_Contact_Form_Tag() );
-    $dynamic_tags->register( new \\My_Sitemap_XML_Tag() );
-    $dynamic_tags->register( new \\My_Company_Address_Tag() );
-});
-
-
-`;
+    ${generatePhpClass('GMB_Link', 'GMB LINK', 'URL', gmbLink)}
+    ${generatePhpClass('Company_Phone_1', 'Company Phone Number 1', 'URL', `tel:${phoneNumber1}`)}
+    ${generatePhpClass('Company_Phone_2', 'Company Phone Number 2', 'URL', `tel:${phoneNumber2}`)}
+    ${generatePhpClass('SMS_Phone', 'SMS Phone Number', 'URL', `sms:${smsPhone}`)}
+    ${generatePhpClass('Company_Email', 'Company Email', 'URL', `mailto:${companyEmail}`)}
+    ${generatePhpClass('Facebook', 'Facebook', 'URL', facebookLink)}
+    ${generatePhpClass('Instagram', 'Instagram', 'URL', instagramLink)}
+    ${generatePhpClass('Twitter', 'Twitter', 'URL', twitterLink)}
+    ${generatePhpClass('TikTok', 'TikTok', 'URL', tiktokLink)}
+    ${generatePhpClass('Phone_Number_Icon_Box', 'Phone Number (Icon Box desc.)', 'TEXT', `<a href="tel:${phoneNumber1}">${phoneNumber1}</a>`)}
+    ${generatePhpClass('Company_Phone_1_Name', 'Company Phone #1 Name', 'TEXT', `Call: ${companyPhone1NameTag}`)}
+    ${generatePhpClass('Company_Phone_2_Name', 'Company Phone #2 Name', 'TEXT', `Call: ${companyPhone2NameTag}`)}
+    ${generatePhpClass('SMS_Phone_Name', 'SMS Phone # Name', 'TEXT', `Text: ${smsPhoneNameTag}`)}
+    ${generatePhpClass('Email_Icon_Box', 'Email (Icon Box desc.)', 'TEXT', `<a href="mailto:${emailIconBoxTag}">Send an email ></a>`)}
+    ${generatePhpClass('Text_Icon_Box', 'SMS (Icon Box desc.)', 'TEXT', `<a href="sms:${textIconBoxTag}">${textIconBoxTag}</a>`)}
+    ${generatePhpClass('To_Email_Contact_Form', 'To Email(s) Contact Form', 'TEXT', toEmailContactFormTag)}
+    ${generatePhpClass('Sitemap_XML', 'sitemap.xml', 'TEXT', `${sitemapXmlTag}/sitemap.xml`)}
+    ${generatePhpClass('Company_Address', 'Company Address', 'TEXT', companyAddressTag)}
+  
+    // Register the custom dynamic tags
+    add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
+      $dynamic_tags->register( new \\My_GMB_Link_Tag() );
+      $dynamic_tags->register( new \\My_Company_Phone_1_Tag() );
+      $dynamic_tags->register( new \\My_Company_Phone_2_Tag() );
+      $dynamic_tags->register( new \\My_SMS_Phone_Tag() );
+      $dynamic_tags->register( new \\My_Company_Email_Tag() );
+      $dynamic_tags->register( new \\My_Facebook_Tag() );
+      $dynamic_tags->register( new \\My_Instagram_Tag() );
+      $dynamic_tags->register( new \\My_Twitter_Tag() );
+      $dynamic_tags->register( new \\My_TikTok_Tag() );
+      $dynamic_tags->register( new \\My_Phone_Number_Icon_Box_Tag() );
+      $dynamic_tags->register( new \\My_Company_Phone_1_Name_Tag() );
+      $dynamic_tags->register( new \\My_Company_Phone_2_Name_Tag() );
+      $dynamic_tags->register( new \\My_SMS_Phone_Name_Tag() );
+      $dynamic_tags->register( new \\My_Email_Icon_Box_Tag() );
+      $dynamic_tags->register( new \\My_Text_Icon_Box_Tag() );
+      $dynamic_tags->register( new \\My_To_Email_Contact_Form_Tag() );
+      $dynamic_tags->register( new \\My_Sitemap_XML_Tag() );
+      $dynamic_tags->register( new \\My_Company_Address_Tag() );
+    });
+  `;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(phpCode);
@@ -622,15 +191,6 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           />
         </label>
 
-        {/* <label>
-          Company Phone 1 Name Tag:
-          <input
-            type="text"
-            value={phoneNumber1}
-            // onChange={(e) => setCompanyPhone1NameTag(e.target.value)}
-          />
-        </label> */}
-
         <label>
           Company Phone 2 Name Tag:
           <input
@@ -650,7 +210,7 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
         </label>
 
         <label>
-          Email Icon Box Tag (icon box):
+          Email Icon Box Tag (HTML):
           <input
             type="text"
             value={emailIconBoxTag}
@@ -659,29 +219,10 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
         </label>
 
         <label>
-          SMS Icon Box Tag (icon box):
-          <input
-            type="text"
-            value={textIconBoxTag}
-            onChange={(e) => setTextIconBoxTag(e.target.value)}
-          />
-        </label>
-
-        <label>
-          Contact form email(s) ( email1, email2 ):
-          <input
-            type="text"
-            value={toEmailContactFormTag}
-            onChange={(e) => setToEmailContactFormTag(e.target.value)}
-          />
-        </label>
-
-        <label>
           Sitemap XML Tag:
           <input
             type="text"
             value={sitemapXmlTag}
-            placeholder="full domain: http://www.nakeddomain.com"
             onChange={(e) => setSitemapXmlTag(e.target.value)}
           />
         </label>
@@ -690,19 +231,14 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           Company Address Tag:
           <input
             type="text"
-            placeholder="company address"
             value={companyAddressTag}
             onChange={(e) => setCompanyAddressTag(e.target.value)}
           />
         </label>
       </div>
       <button onClick={handleCopy}>Copy PHP Code</button>
-      <h2>Generated PHP Code:</h2>
-      <pre>{phpCode}</pre>
-
-      <button onClick={handleCopy}>Copy PHP Code</button>
     </div>
   );
 }
-// test again
+
 export default App;
