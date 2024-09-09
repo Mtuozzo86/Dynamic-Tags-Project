@@ -2,24 +2,24 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [phoneNumber1, setPhoneNumber1] = useState("123-456-7890");
-  const [phoneNumber2, setPhoneNumber2] = useState("123-456-7890");
-  const [smsPhone, setSmsPhone] = useState("123-456-7890");
-  const [companyEmail, setCompanyEmail] = useState("example@gmail.com");
+  const [gmbLink, setGmbLink] = useState("");
+  const [phoneNumber1, setPhoneNumber1] = useState("");
+  const [phoneNumber2, setPhoneNumber2] = useState("");
+  const [smsPhone, setSmsPhone] = useState("");
+  const [companyEmail, setCompanyEmail] = useState("");
   const [facebookLink, setFacebookLink] = useState("");
   const [instagramLink, setInstagramLink] = useState("");
   const [twitterLink, setTwitterLink] = useState("");
   const [tiktokLink, setTiktokLink] = useState("");
-  //   new
-  const [phoneNumberIconBoxTag, setPhoneNumberIconBoxTag] = useState("My_Phone_Number_Icon_Box_Tag")
-  const [companyPhone1NameTag, setCompanyPhone1NameTag] = useState("My_Company_Phone_1_Name_Tag");
-  const [companyPhone2NameTag, setCompanyPhone2NameTag] = useState("My_Company_Phone_2_Name_Tag");
-  const [smsPhoneNameTag, setSmsPhoneNameTag] = useState("My_SMS_Phone_Name_Tag");
-  const [emailIconBoxTag, setEmailIconBoxTag] = useState("My_Email_Icon_Box_Tag");
-  const [textIconBoxTag, setTextIconBoxTag] = useState("My_Text_Icon_Box_Tag");
-  const [toEmailContactFormTag, setToEmailContactFormTag] = useState("My_To_Email_Contact_Form_Tag");
-  const [sitemapXmlTag, setSitemapXmlTag] = useState("My_Sitemap_XML_Tag");
-  const [companyAddressTag, setCompanyAddressTag] = useState("My_Company_Address_Tag");
+  const [phoneNumberIconBoxTag, setPhoneNumberIconBoxTag] = useState("");
+  const [companyPhone1NameTag, setCompanyPhone1NameTag] = useState("");
+  const [companyPhone2NameTag, setCompanyPhone2NameTag] = useState("");
+  const [smsPhoneNameTag, setSmsPhoneNameTag] = useState("");
+  const [emailIconBoxTag, setEmailIconBoxTag] = useState("");
+  const [textIconBoxTag, setTextIconBoxTag] = useState("");
+  const [toEmailContactFormTag, setToEmailContactFormTag] = useState("");
+  const [sitemapXmlTag, setSitemapXmlTag] = useState("");
+  const [companyAddressTag, setCompanyAddressTag] = useState("");
 
   const phpCode = `
 
@@ -44,7 +44,7 @@ class My_GMB_Dynamic_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     protected function register_controls() {}
 
     public function render() {
-        echo 'https://www.google.com/maps/place/Hozio/@40.7852334,-73.1245822,15z/data=!4m2!3m1!1s0x0:0xa869db6fac2eab4f?sa=X&ved=1t:2428&ictx=111';
+        echo '${gmbLink}';
     }
 }
 
@@ -533,6 +533,15 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
       <h1>PHP Dynamic Tag Generator</h1>
       <div className="input-fields">
         <label>
+          GMB Link:
+          <input
+            type="text"
+            value={gmbLink}
+            onChange={(e) => setGmbLink(e.target.value)}
+          />
+        </label>
+
+        <label>
           Company Phone Number 1:
           <input
             type="text"
@@ -672,6 +681,7 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           <input
             type="text"
             value={sitemapXmlTag}
+            placeholder="full domain: http://www.nakeddomain.com"
             onChange={(e) => setSitemapXmlTag(e.target.value)}
           />
         </label>
@@ -680,13 +690,11 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           Company Address Tag:
           <input
             type="text"
+            placeholder="company address"
             value={companyAddressTag}
             onChange={(e) => setCompanyAddressTag(e.target.value)}
           />
         </label>
-
-
-
       </div>
       <button onClick={handleCopy}>Copy PHP Code</button>
       <h2>Generated PHP Code:</h2>
