@@ -10,6 +10,16 @@ function App() {
   const [instagramLink, setInstagramLink] = useState("");
   const [twitterLink, setTwitterLink] = useState("");
   const [tiktokLink, setTiktokLink] = useState("");
+  //   new
+  const [phoneNumberIconBoxTag, setPhoneNumberIconBoxTag] = useState("My_Phone_Number_Icon_Box_Tag")
+  const [companyPhone1NameTag, setCompanyPhone1NameTag] = useState("My_Company_Phone_1_Name_Tag");
+  const [companyPhone2NameTag, setCompanyPhone2NameTag] = useState("My_Company_Phone_2_Name_Tag");
+  const [smsPhoneNameTag, setSmsPhoneNameTag] = useState("My_SMS_Phone_Name_Tag");
+  const [emailIconBoxTag, setEmailIconBoxTag] = useState("My_Email_Icon_Box_Tag");
+  const [textIconBoxTag, setTextIconBoxTag] = useState("My_Text_Icon_Box_Tag");
+  const [toEmailContactFormTag, setToEmailContactFormTag] = useState("My_To_Email_Contact_Form_Tag");
+  const [sitemapXmlTag, setSitemapXmlTag] = useState("My_Sitemap_XML_Tag");
+  const [companyAddressTag, setCompanyAddressTag] = useState("My_Company_Address_Tag");
 
   const phpCode = `
 
@@ -263,6 +273,231 @@ class My_Phone_Number_Icon_Box_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     }
 }
 
+// Custom dynamic tag for Phone Number (Icon Box desc.)
+class My_Phone_Number_Icon_Box_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'phone-number-icon-box';
+    }
+
+    public function get_title() {
+        return __( 'Phone Number (Icon Box desc.)', 'plugin-name' );
+    }
+
+    public function get_group() {
+        return 'site';
+    }
+
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
+    }
+
+    protected function register_controls() {}
+
+    public function render() {
+        echo '<a href="${phoneNumberIconBoxTag}">${phoneNumberIconBoxTag}</a>';
+    }
+}
+
+// Custom dynamic tag for Company Phone #1 Name
+class My_Company_Phone_1_Name_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'company-phone-1-name';
+    }
+
+    public function get_title() {
+        return __( 'Company Phone #1 Name', 'plugin-name' );
+    }
+
+    public function get_group() {
+        return 'site';
+    }
+
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
+    }
+
+    protected function register_controls() {}
+
+    public function render() {
+        echo 'Call: ${companyPhone1NameTag}';
+    }
+}
+
+// Custom dynamic tag for Company Phone #2 Name
+class My_Company_Phone_2_Name_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'company-phone-2-name';
+    }
+
+    public function get_title() {
+        return __( 'Company Phone #2 Name', 'plugin-name' );
+    }
+
+    public function get_group() {
+        return 'site';
+    }
+
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
+    }
+
+    protected function register_controls() {}
+
+    public function render() {
+        echo 'Call: ${companyPhone2NameTag}';
+    }
+}
+
+// Custom dynamic tag for SMS Phone # Name
+class My_SMS_Phone_Name_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'sms-phone-name';
+    }
+
+    public function get_title() {
+        return __( 'SMS Phone # Name', 'plugin-name' );
+    }
+
+    public function get_group() {
+        return 'site';
+    }
+
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
+    }
+
+    protected function register_controls() {}
+
+    public function render() {
+        echo 'Text: ${smsPhoneNameTag}';
+    }
+}
+
+// Custom dynamic tag for Email (Icon Box desc.)
+class My_Email_Icon_Box_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'email-icon-box';
+    }
+
+    public function get_title() {
+        return __( 'Email (Icon Box desc.)', 'plugin-name' );
+    }
+
+    public function get_group() {
+        return 'site';
+    }
+
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
+    }
+
+    protected function register_controls() {}
+
+    public function render() {
+        echo '<a href="${emailIconBoxTag}">Send an email ></a>';
+    }
+}
+
+// Custom dynamic tag for SMS (Icon Box desc.)
+class My_Text_Icon_Box_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'text-icon-box';
+    }
+
+    public function get_title() {
+        return __( 'SMS (Icon Box desc.)', 'plugin-name' );
+    }
+
+    public function get_group() {
+        return 'site';
+    }
+
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
+    }
+
+    protected function register_controls() {}
+
+    public function render() {
+        echo '<a href="sms:${textIconBoxTag}">${textIconBoxTag}</a>';
+    }
+}
+
+// Custom dynamic tag for "To Email(s) Contact Form"
+class My_To_Email_Contact_Form_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'to-email-contact-form';
+    }
+
+    public function get_title() {
+        return __( 'To Email(s) Contact Form', 'plugin-name' );
+    }
+
+    public function get_group() {
+        return 'site';
+    }
+
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
+    }
+
+    protected function register_controls() {}
+
+    public function render() {
+        echo '${toEmailContactFormTag}';
+    }
+}
+
+// Custom dynamic tag for "sitemap.xml"
+class My_Sitemap_XML_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'sitemap-xml';
+    }
+
+    public function get_title() {
+        return __( 'sitemap.xml', 'plugin-name' );
+    }
+
+    public function get_group() {
+        return 'site';
+    }
+
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
+    }
+
+    protected function register_controls() {}
+
+    public function render() {
+        echo '${sitemapXmlTag}/sitemap.xml';
+    }
+}
+
+// Custom dynamic tag for Company Address
+class My_Company_Address_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'company-address';
+    }
+
+    public function get_title() {
+        return __( 'Company Address', 'plugin-name' );
+    }
+
+    public function get_group() {
+        return 'site';
+    }
+
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
+    }
+
+    protected function register_controls() {}
+
+    public function render() {
+        echo '${companyAddressTag}'; // Replace this with your actual company address
+    }
+}
+
 // Register the custom dynamic tags
 add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
     $dynamic_tags->register( new \\My_GMB_Dynamic_Tag() );
@@ -275,6 +510,14 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
     $dynamic_tags->register( new \\My_Twitter_Tag() );
     $dynamic_tags->register( new \\My_TikTok_Tag() );
     $dynamic_tags->register( new \\My_Phone_Number_Icon_Box_Tag() );
+    $dynamic_tags->register( new \\My_Company_Phone_1_Name_Tag() );
+    $dynamic_tags->register( new \\My_Company_Phone_2_Name_Tag() );
+    $dynamic_tags->register( new \\My_SMS_Phone_Name_Tag() );
+    $dynamic_tags->register( new \\My_Email_Icon_Box_Tag() );
+    $dynamic_tags->register( new \\My_Text_Icon_Box_Tag() );
+    $dynamic_tags->register( new \\My_To_Email_Contact_Form_Tag() );
+    $dynamic_tags->register( new \\My_Sitemap_XML_Tag() );
+    $dynamic_tags->register( new \\My_Company_Address_Tag() );
 });
 
 
@@ -360,6 +603,90 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
             onChange={(e) => setTiktokLink(e.target.value)}
           />
         </label>
+
+        <label>
+          Phone Number Icon Box Tag:
+          <input
+            type="text"
+            value={phoneNumberIconBoxTag}
+            onChange={(e) => setPhoneNumberIconBoxTag(e.target.value)}
+          />
+        </label>
+
+        <label>
+          Company Phone 1 Name Tag:
+          <input
+            type="text"
+            value={companyPhone1NameTag}
+            onChange={(e) => setCompanyPhone1NameTag(e.target.value)}
+          />
+        </label>
+
+        <label>
+          Company Phone 2 Name Tag:
+          <input
+            type="text"
+            value={companyPhone2NameTag}
+            onChange={(e) => setCompanyPhone2NameTag(e.target.value)}
+          />
+        </label>
+
+        <label>
+          SMS Phone Number Name Tag:
+          <input
+            type="text"
+            value={smsPhoneNameTag}
+            onChange={(e) => setSmsPhoneNameTag(e.target.value)}
+          />
+        </label>
+
+        <label>
+          Email Icon Box Tag (icon box):
+          <input
+            type="text"
+            value={emailIconBoxTag}
+            onChange={(e) => setEmailIconBoxTag(e.target.value)}
+          />
+        </label>
+
+        <label>
+          SMS Icon Box Tag (icon box):
+          <input
+            type="text"
+            value={textIconBoxTag}
+            onChange={(e) => setTextIconBoxTag(e.target.value)}
+          />
+        </label>
+
+        <label>
+          Contact form email(s) ( email1, email2 ):
+          <input
+            type="text"
+            value={toEmailContactFormTag}
+            onChange={(e) => setToEmailContactFormTag(e.target.value)}
+          />
+        </label>
+
+        <label>
+          Sitemap XML Tag:
+          <input
+            type="text"
+            value={sitemapXmlTag}
+            onChange={(e) => setSitemapXmlTag(e.target.value)}
+          />
+        </label>
+
+        <label>
+          Company Address Tag:
+          <input
+            type="text"
+            value={companyAddressTag}
+            onChange={(e) => setCompanyAddressTag(e.target.value)}
+          />
+        </label>
+
+
+
       </div>
       <button onClick={handleCopy}>Copy PHP Code</button>
       <h2>Generated PHP Code:</h2>
