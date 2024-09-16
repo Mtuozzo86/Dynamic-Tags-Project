@@ -622,14 +622,14 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           />
         </label>
 
-        {/* <label>
+      <label>
           Company Phone 1 Name Tag:
           <input
             type="text"
             value={phoneNumber1}
-            // onChange={(e) => setCompanyPhone1NameTag(e.target.value)}
+            onChange={(e) => setCompanyPhone1NameTag(e.target.value)}
           />
-        </label> */}
+        </label>
 
         <label>
           Company Phone 2 Name Tag:
