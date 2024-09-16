@@ -12,9 +12,6 @@ function App() {
   const [twitterLink, setTwitterLink] = useState("");
   const [tiktokLink, setTiktokLink] = useState("");
   const [phoneNumberIconBoxTag, setPhoneNumberIconBoxTag] = useState("");
-  const [companyPhone1NameTag, setCompanyPhone1NameTag] = useState("");
-  const [companyPhone2NameTag, setCompanyPhone2NameTag] = useState("");
-  const [smsPhoneNameTag, setSmsPhoneNameTag] = useState("");
   const [emailIconBoxTag, setEmailIconBoxTag] = useState("");
   const [textIconBoxTag, setTextIconBoxTag] = useState("");
   const [toEmailContactFormTag, setToEmailContactFormTag] = useState("");
@@ -319,7 +316,7 @@ class My_Company_Phone_1_Name_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     protected function register_controls() {}
 
     public function render() {
-        echo 'Call: ${phoneNumber1}';
+        echo '${phoneNumber1}';
     }
 }
 
@@ -344,7 +341,7 @@ class My_Company_Phone_2_Name_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     protected function register_controls() {}
 
     public function render() {
-        echo 'Call: ${companyPhone2NameTag}';
+        echo '${phoneNumber2}';
     }
 }
 
@@ -369,7 +366,7 @@ class My_SMS_Phone_Name_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     protected function register_controls() {}
 
     public function render() {
-        echo 'Text: ${smsPhoneNameTag}';
+        echo '${smsPhone}';
     }
 }
 
@@ -394,7 +391,7 @@ class My_Email_Icon_Box_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     protected function register_controls() {}
 
     public function render() {
-        echo '<a href="${emailIconBoxTag}">Send an email ></a>';
+        echo '<a href="${companyEmail}">Send an email ></a>';
     }
 }
 
@@ -419,7 +416,7 @@ class My_Text_Icon_Box_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     protected function register_controls() {}
 
     public function render() {
-        echo '<a href="sms:${textIconBoxTag}">${textIconBoxTag}</a>';
+        echo '<a href="sms:${smsPhone}">${smsPhone}</a>';
     }
 }
 
@@ -617,8 +614,8 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           Phone Number Icon Box Tag:
           <input
             type="text"
-            value={phoneNumberIconBoxTag}
-            onChange={(e) => setPhoneNumberIconBoxTag(e.target.value)}
+            value={phoneNumber1}
+            // onChange={(e) => setPhoneNumberIconBoxTag(e.target.value)}
           />
         </label>
 
@@ -627,7 +624,7 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           <input
             type="text"
             value={phoneNumber1}
-            onChange={(e) => setCompanyPhone1NameTag(e.target.value)}
+            // onChange={(e) => setCompanyPhone1NameTag(e.target.value)}
           />
         </label>
 
@@ -635,8 +632,8 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           Company Phone 2 Name Tag:
           <input
             type="text"
-            value={companyPhone2NameTag}
-            onChange={(e) => setCompanyPhone2NameTag(e.target.value)}
+            value={phoneNumber2}
+            // onChange={(e) => setCompanyPhone2NameTag(e.target.value)}
           />
         </label>
 
@@ -644,8 +641,8 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           SMS Phone Number Name Tag:
           <input
             type="text"
-            value={smsPhoneNameTag}
-            onChange={(e) => setSmsPhoneNameTag(e.target.value)}
+            value={smsPhone}
+            // onChange={(e) => setSmsPhoneNameTag(e.target.value)}
           />
         </label>
 
@@ -653,8 +650,8 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           Email Icon Box Tag (icon box):
           <input
             type="text"
-            value={emailIconBoxTag}
-            onChange={(e) => setEmailIconBoxTag(e.target.value)}
+            value={companyEmail}
+            // onChange={(e) => setEmailIconBoxTag(e.target.value)}
           />
         </label>
 
@@ -662,8 +659,8 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           SMS Icon Box Tag (icon box):
           <input
             type="text"
-            value={textIconBoxTag}
-            onChange={(e) => setTextIconBoxTag(e.target.value)}
+            value={smsPhone}
+            // onChange={(e) => setTextIconBoxTag(e.target.value)}
           />
         </label>
 
