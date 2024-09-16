@@ -267,30 +267,6 @@ class My_Phone_Number_Icon_Box_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     }
 }
 
-// Custom dynamic tag for Phone Number (Icon Box desc.)
-class My_Phone_Number_Icon_Box_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
-    public function get_name() {
-        return 'phone-number-icon-box';
-    }
-
-    public function get_title() {
-        return __( 'Phone Number (Icon Box desc.)', 'plugin-name' );
-    }
-
-    public function get_group() {
-        return 'site';
-    }
-
-    public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
-    }
-
-    protected function register_controls() {}
-
-    public function render() {
-        echo '<a href="${phoneNumberIconBoxTag}">${phoneNumberIconBoxTag}</a>';
-    }
-}
 
 // Custom dynamic tag for Company Phone #1 Name
 class My_Company_Phone_1_Name_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
