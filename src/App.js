@@ -11,9 +11,6 @@ function App() {
   const [instagramLink, setInstagramLink] = useState("");
   const [twitterLink, setTwitterLink] = useState("");
   const [tiktokLink, setTiktokLink] = useState("");
-  const [phoneNumberIconBoxTag, setPhoneNumberIconBoxTag] = useState("");
-  const [emailIconBoxTag, setEmailIconBoxTag] = useState("");
-  const [textIconBoxTag, setTextIconBoxTag] = useState("");
   const [toEmailContactFormTag, setToEmailContactFormTag] = useState("");
   const [sitemapXmlTag, setSitemapXmlTag] = useState("");
   const [companyAddressTag, setCompanyAddressTag] = useState("");
