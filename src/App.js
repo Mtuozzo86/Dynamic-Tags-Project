@@ -164,7 +164,7 @@ class My_Facebook_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     protected function register_controls() {}
 
     public function render() {
-        echo '${facebookLink}';
+        echo '<a href="${facebookLink}"></a>';
     }
 }
 
@@ -490,7 +490,7 @@ class My_Yelp_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     protected function register_controls() {}
 
     public function render() {
-        echo '';
+        echo '${yelp}';
     }
 }
 
