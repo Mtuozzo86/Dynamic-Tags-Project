@@ -164,7 +164,7 @@ class My_Facebook_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     protected function register_controls() {}
 
     public function render() {
-        echo '<a href="${facebookLink}"></a>';
+        echo '${facebookLink}';
     }
 }
 
@@ -365,7 +365,7 @@ class My_Email_Icon_Box_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     protected function register_controls() {}
 
     public function render() {
-        echo '<a href="${companyEmail}">Send an email ></a>';
+        echo '<a href="${companyEmail}" />Send an email</a>';
     }
 }
 
@@ -535,6 +535,7 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           <input
             type="text"
             value={gmbLink}
+            placeholder="https://"
             onChange={(e) => setGmbLink(e.target.value)}
           />
         </label>
@@ -580,6 +581,7 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           <input
             type="text"
             value={facebookLink}
+            placeholder="https://"
             onChange={(e) => setFacebookLink(e.target.value)}
           />
         </label>
@@ -589,6 +591,7 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           <input
             type="text"
             value={instagramLink}
+            placeholder="https://"
             onChange={(e) => setInstagramLink(e.target.value)}
           />
         </label>
@@ -598,6 +601,7 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           <input
             type="text"
             value={twitterLink}
+            placeholder="https://"
             onChange={(e) => setTwitterLink(e.target.value)}
           />
         </label>
@@ -607,6 +611,7 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           <input
             type="text"
             value={tiktokLink}
+            placeholder="https://"
             onChange={(e) => setTiktokLink(e.target.value)}
           />
         </label>
@@ -697,7 +702,7 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           Yelp:
           <input
             type="text"
-            placeholder="company address"
+            placeholder="https://"
             value={yelp}
             onChange={(e) => setYelp(e.target.value)}
           />
