@@ -434,7 +434,7 @@ class My_Sitemap_XML_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     }
 
     public function get_categories() {
-        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
     }
 
     protected function register_controls() {}
