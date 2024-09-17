@@ -14,6 +14,7 @@ function App() {
   const [toEmailContactFormTag, setToEmailContactFormTag] = useState("");
   const [sitemapXmlTag, setSitemapXmlTag] = useState("");
   const [companyAddressTag, setCompanyAddressTag] = useState("");
+  const [yelp, setYelp] = useState("")
 
   const phpCode = `
 
@@ -468,6 +469,32 @@ class My_Company_Address_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     }
 }
 
+// Custom dynamic tag for Yelp
+class My_Yelp_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'yelp';
+    }
+
+    public function get_title() {
+        return __( 'Yelp', 'plugin-name' );
+    }
+
+    public function get_group() {
+        return 'site';
+    }
+
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
+    }
+
+    protected function register_controls() {}
+
+    public function render() {
+        echo '';
+    }
+}
+
+
 // Register the custom dynamic tags
 add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
     $dynamic_tags->register( new \\My_GMB_Dynamic_Tag() );
@@ -488,6 +515,7 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
     $dynamic_tags->register( new \\My_To_Email_Contact_Form_Tag() );
     $dynamic_tags->register( new \\My_Sitemap_XML_Tag() );
     $dynamic_tags->register( new \\My_Company_Address_Tag() );
+    $dynamic_tags->register( new \\My_Yelp_Tag() );
 });
 
 
@@ -663,6 +691,15 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
             placeholder="company address"
             value={companyAddressTag}
             onChange={(e) => setCompanyAddressTag(e.target.value)}
+          />
+        </label>
+        <label>
+          Yelp:
+          <input
+            type="text"
+            placeholder="company address"
+            value={yelp}
+            onChange={(e) => setYelp(e.target.value)}
           />
         </label>
       </div>
