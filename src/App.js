@@ -842,7 +842,7 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
           />
         </label>
         <label>
-          Business Hours:
+          Business Hours: 
           <input
             type="textarea"
             placeholder="Line 1"
