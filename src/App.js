@@ -15,6 +15,10 @@ function App() {
   const [sitemapXmlTag, setSitemapXmlTag] = useState("");
   const [companyAddressTag, setCompanyAddressTag] = useState("");
   const [yelp, setYelp] = useState("")
+  const [youTube, setYouTube] = useState("")
+  const [angi, setAngi] = useState("")
+  const [homeadvisor, setHomeadvisor] = useState("")
+
 
   const phpCode = `
 
@@ -494,6 +498,82 @@ class My_Yelp_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     }
 }
 
+// Custom dynamic tag for Youtube
+class My_Youtube_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'Youtube';
+    }
+
+    public function get_title() {
+        return __( 'Youtube', 'plugin-name' );
+    }
+
+    public function get_group() {
+        return 'site';
+    }
+
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
+    }
+
+    protected function register_controls() {}
+
+    public function render() {
+        echo '${youTube}';
+    }
+}
+
+// Custom dynamic tag for Angies list
+class My_Angies_List_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'Angies List';
+    }
+
+    public function get_title() {
+        return __( 'Angies List', 'plugin-name' );
+    }
+
+    public function get_group() {
+        return 'site';
+    }
+
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
+    }
+
+    protected function register_controls() {}
+
+    public function render() {
+        echo '${angi}';
+    }
+}
+
+
+// Custom dynamic tag for Home Advisor
+class My_Home_Advisor_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'Home Advisor';
+    }
+
+    public function get_title() {
+        return __( 'Home Advisor', 'plugin-name' );
+    }
+
+    public function get_group() {
+        return 'site';
+    }
+
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::URL_CATEGORY ];
+    }
+
+    protected function register_controls() {}
+
+    public function render() {
+        echo '${homeadvisor}';
+    }
+}
+
 
 // Register the custom dynamic tags
 add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
@@ -516,6 +596,9 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
     $dynamic_tags->register( new \\My_Sitemap_XML_Tag() );
     $dynamic_tags->register( new \\My_Company_Address_Tag() );
     $dynamic_tags->register( new \\My_Yelp_Tag() );
+    $dynamic_tags->register( new \\My_Youtube_Tag() );
+    $dynamic_tags->register( new \\My_Angies_List_Tag() );
+    $dynamic_tags->register( new \\My_Home_Advisor_Tag() );
 });
 
 
@@ -613,6 +696,33 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
             value={tiktokLink}
             placeholder="https://"
             onChange={(e) => setTiktokLink(e.target.value)}
+          />
+        </label>
+        <label>
+          YouTube:
+          <input
+            type="text"
+            value={youTube}
+            placeholder="https://"
+            onChange={(e) => setYouTube(e.target.value)}
+          />
+        </label>
+        <label>
+          Angi:
+          <input
+            type="text"
+            value={angi}
+            placeholder="https://"
+            onChange={(e) => setAngi(e.target.value)}
+          />
+        </label>
+        <label>
+          Homeadvisor:
+          <input
+            type="text"
+            value={homeadvisor}
+            placeholder="https://"
+            onChange={(e) => setHomeadvisor(e.target.value)}
           />
         </label>
 
