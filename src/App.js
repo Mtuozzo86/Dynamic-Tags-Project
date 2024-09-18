@@ -19,9 +19,7 @@ function App() {
   const [youTube, setYouTube] = useState("")
   const [angi, setAngi] = useState("")
   const [homeadvisor, setHomeadvisor] = useState("")
-  const [hours1, setHours1] = useState("")
-  const [hours2, setHours2] = useState("")
-  const [hours3, setHours3] = useState("")
+  const [hours, setHours] = useState("")
 
 
 
@@ -595,7 +593,7 @@ class My_Business_Hours_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     }
     protected function register_controls() {}
     public function render() {
-        echo '${hours1} </br> ${hours2} </br> ${hours3}'; // Replace this with your actual Business Hours
+        echo '${hours}'; // Replace this with your actual Business Hours
     }
 }
 
@@ -845,24 +843,13 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
         </label>
         <label>
         Business Hours: 
-          <input
-            type="textarea"
-            placeholder="Line 1"
-            value={hours1}
-            onChange={(e) => setHours1(e.target.value)}
+          <textarea
+            type="text"
+            placeholder="Add </br> after each line"
+            value={hours}
+            onChange={(e) => setHours(e.target.value)}
           />
-          <input
-            type="textarea"
-            placeholder="Line 2"
-            value={hours2}
-            onChange={(e) => setHours2(e.target.value)}
-          />
-          <input
-            type="textarea"
-            placeholder="Line 2"
-            value={hours3}
-            onChange={(e) => setHours3(e.target.value)}
-          />
+
         </label>
       </div>
       <button onClick={handleCopy}>Copy PHP Code</button>
