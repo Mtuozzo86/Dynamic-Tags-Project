@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Dynamic-Tags-Project/static/css/main.f9f287f5.css",
-    "main.js": "/Dynamic-Tags-Project/static/js/main.c552b3ee.js",
+    "main.css": "/Dynamic-Tags-Project/static/css/main.f34f60b8.css",
+    "main.js": "/Dynamic-Tags-Project/static/js/main.23a70149.js",
     "static/js/453.a0717f32.chunk.js": "/Dynamic-Tags-Project/static/js/453.a0717f32.chunk.js",
     "index.html": "/Dynamic-Tags-Project/index.html",
-    "main.f9f287f5.css.map": "/Dynamic-Tags-Project/static/css/main.f9f287f5.css.map",
-    "main.c552b3ee.js.map": "/Dynamic-Tags-Project/static/js/main.c552b3ee.js.map",
+    "main.f34f60b8.css.map": "/Dynamic-Tags-Project/static/css/main.f34f60b8.css.map",
+    "main.23a70149.js.map": "/Dynamic-Tags-Project/static/js/main.23a70149.js.map",
     "453.a0717f32.chunk.js.map": "/Dynamic-Tags-Project/static/js/453.a0717f32.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f9f287f5.css",
-    "static/js/main.c552b3ee.js"
+    "static/css/main.f34f60b8.css",
+    "static/js/main.23a70149.js"
   ]
 }
