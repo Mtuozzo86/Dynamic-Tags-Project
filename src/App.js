@@ -18,6 +18,9 @@ function App() {
   const [youTube, setYouTube] = useState("")
   const [angi, setAngi] = useState("")
   const [homeadvisor, setHomeadvisor] = useState("")
+  const [hours1, setHours1] = useState("")
+  const [hours2, setHours2] = useState("")
+  const [hours3, setHours3] = useState("")
 
 
   const phpCode = `
@@ -574,6 +577,26 @@ class My_Home_Advisor_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
     }
 }
 
+// Custom dynamic tag for Business Hours
+class My_Business_Hours_Tag extends \\Elementor\\Core\\DynamicTags\\Tag {
+    public function get_name() {
+        return 'business-hours';
+    }
+    public function get_title() {
+        return __( 'Business Hours', 'plugin-name' );
+    }
+    public function get_group() {
+        return 'site';
+    }
+    public function get_categories() {
+        return [ \\Elementor\\Modules\\DynamicTags\\Module::TEXT_CATEGORY ];
+    }
+    protected function register_controls() {}
+    public function render() {
+        echo '${hours1} </br> ${hours2} </br> ${hours3}'; // Replace this with your actual Business Hours
+    }
+}
+
 
 // Register the custom dynamic tags
 add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
@@ -599,6 +622,7 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
     $dynamic_tags->register( new \\My_Youtube_Tag() );
     $dynamic_tags->register( new \\My_Angies_List_Tag() );
     $dynamic_tags->register( new \\My_Home_Advisor_Tag() );
+    $dynamic_tags->register( new \\My_Business_Hours_Tag() );
 });
 
 
@@ -815,6 +839,27 @@ add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
             placeholder="https://"
             value={yelp}
             onChange={(e) => setYelp(e.target.value)}
+          />
+        </label>
+        <label>
+          Business Hours:
+          <input
+            type="textarea"
+            placeholder="Line 1"
+            value={hours1}
+            onChange={(e) => setHours1(e.target.value)}
+          />
+          <input
+            type="textarea"
+            placeholder="Line 2"
+            value={hours2}
+            onChange={(e) => setHours2(e.target.value)}
+          />
+          <input
+            type="textarea"
+            placeholder="Line 2"
+            value={hours3}
+            onChange={(e) => setHours3(e.target.value)}
           />
         </label>
       </div>
